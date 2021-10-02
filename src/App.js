@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { getPokemon } from './actions/getPokemon/getPokemon-action';
 import { getAllPokemon } from './actions/getAllPokemon/getAllPokemon-action';
+import PokemonCard from './components/PokemonCard/PokemonCard';
 import './App.css';
 
 function App() {
-  const [pokemonData, setPokemonData] = useState([])
+  const [pokemonData, setPokemonData] = useState([]);
   const api = 'https://pokeapi.co/api/v2/pokemon';
 
   useEffect(() => {
@@ -21,18 +22,21 @@ function App() {
     // Maps all pokemons into separate objects
     let _pokemonData = await Promise.all(data.map(async pokemon => {
       let pokemonGet = await getPokemon(pokemon)
-      // console.log(pokemonGet)
       return pokemonGet
     }))
     // Puts all pokemon objects into an array
-    setPokemonData(_pokemonData)
-    // console.log(_pokemonData)
+    setPokemonData(_pokemonData);
+    // console.log(_pokemonData);
   }
 
   return (
     <div className="App">
       {pokemonData.map((pokemon) => (
-        <div key={pokemon.name}>{pokemon.name}</div>
+        <PokemonCard 
+          key={pokemon.name} 
+          name={pokemon.name}
+          img={pokemon.sprites.front_default}
+        />
       ))}
     </div>
   );
