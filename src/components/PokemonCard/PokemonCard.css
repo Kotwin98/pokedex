@@ -1,5 +1,5 @@
 .PokemonCard__container {
     border: 1px solid #ccc;
-    min-width: 30%;
-    /* display: flex; */
+    width: 30%;
+    margin: 10px 0px;
 }
