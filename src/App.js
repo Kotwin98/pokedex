@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { getPokemon } from './actions/getPokemon/getPokemon-action';
 import { getAllPokemon } from './actions/getAllPokemon/getAllPokemon-action';
 import PokemonCard from './components/PokemonCard/PokemonCard';
+import Spinner from './components/Spinner/Spinner';
 import './App.css';
 
 function App() {
   const [pokemonData, setPokemonData] = useState([]);
-  const api = 'https://pokeapi.co/api/v2/pokemon';
   const [prevPage, setPrevPage] = useState();
   const [nextPage, setNextPage] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const api = 'https://pokeapi.co/api/v2/pokemon';
 
   useEffect(() => {
     async function fetchData() {
@@ -16,6 +18,7 @@ function App() {
       setPrevPage(response.previous);
       setNextPage(response.next);
       await loadPokemon(response.results);
+      setIsLoading(false);
       console.log(response);
     }
     fetchData();
@@ -50,17 +53,42 @@ function App() {
 
   return (
     <div className="App">
-      {pokemonData.map((pokemon) => (
-        <PokemonCard 
-          key={pokemon.name} 
-          name={pokemon.name}
-          img={pokemon.sprites.front_default}
-        />
-      ))}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <div>
+          {pokemonData.map((pokemon) => (
+            <PokemonCard 
+            key={pokemon.name} 
+            name={pokemon.name}
+            img={pokemon.sprites.front_default}
+            />
+            ))}
+        </div>
+      )}
       <button onClick={loadPrevious}>Previous</button>
       <button onClick={loadNext}>Next</button>
     </div>
   );
+
+  // return (
+  //   <div className="App">
+  //     {isLoading ? (
+  //       <Spinner />
+  //     ) : (
+
+  //     )}
+  //     {pokemonData.map((pokemon) => (
+  //       <PokemonCard 
+  //         key={pokemon.name} 
+  //         name={pokemon.name}
+  //         img={pokemon.sprites.front_default}
+  //       />
+  //     ))}
+  //     <button onClick={loadPrevious}>Previous</button>
+  //     <button onClick={loadNext}>Next</button>
+  //   </div>
+  // );
 }
 
 export default App;
