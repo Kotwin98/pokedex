@@ -7,15 +7,34 @@ import './App.css';
 function App() {
   const [pokemonData, setPokemonData] = useState([]);
   const api = 'https://pokeapi.co/api/v2/pokemon';
+  const [prevPage, setPrevPage] = useState();
+  const [nextPage, setNextPage] = useState();
 
   useEffect(() => {
     async function fetchData() {
       let response = await getAllPokemon(api);
+      setPrevPage(response.previous);
+      setNextPage(response.next);
       await loadPokemon(response.results);
       console.log(response);
     }
     fetchData();
   }, [])
+
+  const loadPrevious = async () => {
+    if (!prevPage) return;
+    let data = await getAllPokemon(prevPage);
+    await loadPokemon(data.results);
+    setPrevPage(data.previous);
+    setNextPage(data.next);
+  }
+
+  const loadNext = async () => {
+    let data = await getAllPokemon(nextPage);
+    await loadPokemon(data.results);
+    setPrevPage(data.previous);
+    setNextPage(data.next);
+  }
 
   const loadPokemon = async (data) => {
     // Promise.all waits for all promises to be resolved, or for any to be rejected
@@ -38,6 +57,8 @@ function App() {
           img={pokemon.sprites.front_default}
         />
       ))}
+      <button onClick={loadPrevious}>Previous</button>
+      <button onClick={loadNext}>Next</button>
     </div>
   );
 }
