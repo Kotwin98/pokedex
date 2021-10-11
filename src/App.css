@@ -1,6 +1,9 @@
 .App {
   text-align: center;
   width: 100%;
+}
+
+.pokemon__list-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;

@@ -26,17 +26,21 @@ function App() {
 
   const loadPrevious = async () => {
     if (!prevPage) return;
+    setIsLoading(true);
     let data = await getAllPokemon(prevPage);
     await loadPokemon(data.results);
     setPrevPage(data.previous);
     setNextPage(data.next);
+    setIsLoading(false);
   }
 
   const loadNext = async () => {
+    setIsLoading(true);
     let data = await getAllPokemon(nextPage);
     await loadPokemon(data.results);
     setPrevPage(data.previous);
     setNextPage(data.next);
+    setIsLoading(false);
   }
 
   const loadPokemon = async (data) => {
@@ -56,12 +60,12 @@ function App() {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div>
+        <div className="pokemon__list-container">
           {pokemonData.map((pokemon) => (
             <PokemonCard 
-            key={pokemon.name} 
-            name={pokemon.name}
-            img={pokemon.sprites.front_default}
+              key={pokemon.name} 
+              name={pokemon.name}
+              img={pokemon.sprites.front_default}
             />
             ))}
         </div>
@@ -70,25 +74,6 @@ function App() {
       <button onClick={loadNext}>Next</button>
     </div>
   );
-
-  // return (
-  //   <div className="App">
-  //     {isLoading ? (
-  //       <Spinner />
-  //     ) : (
-
-  //     )}
-  //     {pokemonData.map((pokemon) => (
-  //       <PokemonCard 
-  //         key={pokemon.name} 
-  //         name={pokemon.name}
-  //         img={pokemon.sprites.front_default}
-  //       />
-  //     ))}
-  //     <button onClick={loadPrevious}>Previous</button>
-  //     <button onClick={loadNext}>Next</button>
-  //   </div>
-  // );
 }
 
 export default App;
