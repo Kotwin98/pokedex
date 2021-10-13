@@ -66,6 +66,7 @@ function App() {
               key={pokemon.name} 
               name={pokemon.name}
               img={pokemon.sprites.front_default}
+              type={pokemon.types}
             />
             ))}
         </div>
