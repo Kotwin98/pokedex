@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './PokemonCard.css';
 
 const PokemonCard = (props) => {
@@ -48,7 +49,16 @@ const PokemonCard = (props) => {
     return (
         <div className="PokemonCard__container">
             <p>{props.name}</p>
-            <img src={props.img} />
+            <Link to={{
+                pathname:`/pokemon/${props.id}`,
+                pokemonProps: {
+                    name: props.name,
+                    height: props.height,
+                    weight: props.weight
+                }
+            }}>
+                <img src={props.img} alt="pokemon" />
+            </Link>
             <div>
                 {props.type.map(type => (
                     <p style={{ backgroundColor: typeColor(type.type.name) }}>{type.type.name}</p>
