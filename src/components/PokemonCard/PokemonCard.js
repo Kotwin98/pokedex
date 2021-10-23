@@ -13,8 +13,10 @@ const PokemonCard = (props) => {
                     id: props.id,
                     name: props.name,
                     img: props.img,
+                    type: props.type,
                     height: props.height,
-                    weight: props.weight
+                    weight: props.weight,
+                    stats: props.stats
                 }
             }}>
                 <img src={props.img} alt="pokemon" />

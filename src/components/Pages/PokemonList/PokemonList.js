@@ -69,6 +69,7 @@ const PokemonList = () => {
                             type={pokemon.types}
                             height={pokemon.height}
                             weight={pokemon.weight}
+                            stats={pokemon.stats}
                         />
                     ))}
                 </div>
