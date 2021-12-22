@@ -6,7 +6,6 @@ import './PokemonCard.css';
 const PokemonCard = (props) => {
     return (
         <div className="PokemonCard__container">
-            <p>{props.name}</p>
             <Link to={{
                 pathname:`/pokemon/${props.id}`,
                 pokemonProps: {
@@ -19,11 +18,15 @@ const PokemonCard = (props) => {
                     stats: props.stats
                 }
             }}>
-                <img src={props.img} alt="pokemon" />
+                <div className="PokemonCard__img-container">
+                    <img src={props.img} className="PokemonCard__img" alt="pokemon" />
+                </div>
             </Link>
-            <div>
+            <p className="PokemonCard__index">#{props.id}</p>
+            <p className="PokemonCard__name">{props.name}</p>
+            <div className="PokemonCard__type-container">
                 {props.type.map(type => (
-                    <p style={{ backgroundColor: getTypeColor(type.type.name) }}>{type.type.name}</p>
+                    <span className="PokemonCard__type" style={{ backgroundColor: getTypeColor(type.type.name) }}>{type.type.name}</span>
                 ))}
             </div>
         </div>

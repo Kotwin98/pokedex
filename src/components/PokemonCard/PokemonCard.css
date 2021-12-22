@@ -1,5 +1,36 @@
 .PokemonCard__container {
     border: 1px solid #ccc;
-    width: 30%;
+    width: 24%;
     margin: 10px 0px;
+}
+
+.PokemonCard__type-container {
+    margin-bottom: 20px;
+}
+
+.PokemonCard__type {
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    margin: 10px;
+}
+
+.PokemonCard__name {
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin: 10px;
+}
+
+.PokemonCard__index {
+    margin-left: 10px;
+}
+
+.PokemonCard__img-container {
+    width: 100%;
+    text-align: center;
+}
+
+.PokemonCard__img {
+    width: 150px;
+    height: 150px;
 }
