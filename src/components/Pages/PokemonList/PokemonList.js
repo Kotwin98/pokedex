@@ -3,6 +3,7 @@ import { getPokemon } from '../../../actions/getPokemon/getPokemon-action';
 import { getAllPokemon } from '../../../actions/getAllPokemon/getAllPokemon-action';
 import PokemonCard from '../../PokemonCard/PokemonCard';
 import Spinner from '../../Spinner/Spinner';
+import './PokemonList.css';
 
 const PokemonList = () => {
     const [pokemonData, setPokemonData] = useState([]);
