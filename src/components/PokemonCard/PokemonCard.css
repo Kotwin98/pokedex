@@ -6,12 +6,14 @@
 
 .PokemonCard__type-container {
     margin-bottom: 20px;
+    display: flex;
 }
 
 .PokemonCard__type {
     padding: 0.25rem 0.5rem;
     border-radius: 1rem;
     margin: 10px;
+    width: fit-content;
 }
 
 .PokemonCard__name {
@@ -31,6 +33,21 @@
 }
 
 .PokemonCard__img {
-    width: 150px;
-    height: 150px;
+    width: 60%;
+}
+
+@media(max-width: 768px) {
+    .PokemonCard__container {
+        width: 30%;
+    }
+
+    .PokemonCard__type-container {
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 550px) {
+    .PokemonCard__container {
+        width: 46%;
+    }
 }
