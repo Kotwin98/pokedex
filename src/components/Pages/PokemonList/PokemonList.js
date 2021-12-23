@@ -60,25 +60,27 @@ const PokemonList = () => {
             {isLoading ? (
                 <Spinner />
             ) : (
-                <div className="pokemon__list-container">
-                    {pokemonData.map((pokemon) => (
-                        <PokemonCard 
-                            key={pokemon.name} 
-                            id={pokemon.id}
-                            name={pokemon.name}
-                            img={pokemon.sprites.front_default}
-                            type={pokemon.types}
-                            height={pokemon.height}
-                            weight={pokemon.weight}
-                            stats={pokemon.stats}
-                        />
-                    ))}
-                </div>
+                <>
+                    <div className="pokemon__list-container">
+                        {pokemonData.map((pokemon) => (
+                            <PokemonCard 
+                                key={pokemon.name} 
+                                id={pokemon.id}
+                                name={pokemon.name}
+                                img={pokemon.sprites.front_default}
+                                type={pokemon.types}
+                                height={pokemon.height}
+                                weight={pokemon.weight}
+                                stats={pokemon.stats}
+                            />
+                        ))}
+                    </div>
+                    <div className="pokemon__list-button-container">
+                        <button className="pokemon__list-button" onClick={loadPrevious}>Previous</button>
+                        <button className="pokemon__list-button" onClick={loadNext}>Next</button>
+                    </div>
+                </>
             )}
-            <div className="pokemon__list-button-container">
-                <button className="pokemon__list-button" onClick={loadPrevious}>Previous</button>
-                <button className="pokemon__list-button" onClick={loadNext}>Next</button>
-            </div>
         </div>
     );
 }
