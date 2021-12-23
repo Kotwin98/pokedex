@@ -75,8 +75,10 @@ const PokemonList = () => {
                     ))}
                 </div>
             )}
-            <button onClick={loadPrevious}>Previous</button>
-            <button onClick={loadNext}>Next</button>
+            <div className="pokemon__list-button-container">
+                <button className="pokemon__list-button" onClick={loadPrevious}>Previous</button>
+                <button className="pokemon__list-button" onClick={loadNext}>Next</button>
+            </div>
         </div>
     );
 }
