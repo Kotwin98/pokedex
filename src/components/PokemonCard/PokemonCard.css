@@ -33,7 +33,7 @@
 }
 
 .PokemonCard__img {
-    width: 60%;
+    width: 40%;
 }
 
 @media(max-width: 768px) {
@@ -43,6 +43,10 @@
 
     .PokemonCard__type-container {
         flex-direction: column;
+    }
+
+    .PokemonCard__img {
+        width: 60%;
     }
 }
 
