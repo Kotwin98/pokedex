@@ -19,7 +19,7 @@ const PokemonList = () => {
           setNextPage(response.next);
           await loadPokemon(response.results);
           setIsLoading(false);
-          console.log(response);
+        //   console.log(response);
         }
         fetchData();
     }, [])
