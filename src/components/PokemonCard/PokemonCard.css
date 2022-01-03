@@ -30,6 +30,7 @@
 .PokemonCard__img-container {
     width: 100%;
     text-align: center;
+    background: #f1f1f1;
 }
 
 .PokemonCard__img {
