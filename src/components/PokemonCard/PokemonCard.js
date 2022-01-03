@@ -26,7 +26,7 @@ const PokemonCard = (props) => {
             <p className="PokemonCard__name">{props.name}</p>
             <div className="PokemonCard__type-container">
                 {props.type.map(type => (
-                    <span className="PokemonCard__type" style={{ backgroundColor: getTypeColor(type.type.name) }}>{type.type.name}</span>
+                    <span className="PokemonCard__type" key={type.type.name} style={{ backgroundColor: getTypeColor(type.type.name) }}>{type.type.name}</span>
                 ))}
             </div>
         </div>
